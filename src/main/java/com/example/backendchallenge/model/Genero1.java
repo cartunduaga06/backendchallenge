@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Genero")
-public class Genero {
+public class Genero1 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -12,24 +12,21 @@ public class Genero {
     private String nombre;
     private String imagen;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pelicula_id")
-    private Pelicula peliculas;
 
-    public Genero(String nombre, String imagen, Pelicula peliculas) {
+
+    public Genero1(String nombre, String imagen) {
         this.nombre = nombre;
         this.imagen = imagen;
-        this.peliculas = peliculas;
     }
 
-    public Genero() {
+    public Genero1() {
     }
 
-    public Genero(Integer id, String nombre, String imagen, Pelicula peliculas) {
+    public Genero1(Integer id, String nombre, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.imagen = imagen;
-        this.peliculas = peliculas;
+
     }
 
     public Integer getId() {
@@ -56,13 +53,7 @@ public class Genero {
         this.imagen = imagen;
     }
 
-    public Pelicula getPeliculas() {
-        return peliculas;
-    }
 
-    public void setPeliculas(Pelicula peliculas) {
-        this.peliculas = peliculas;
-    }
 
 
 }

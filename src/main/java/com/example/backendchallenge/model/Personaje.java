@@ -1,6 +1,8 @@
 package com.example.backendchallenge.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -16,15 +18,15 @@ public class Personaje {
     private String peso;
     private String historia;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pelicula_id")
-    private Pelicula peliculas;
+    @ManyToMany(mappedBy = "personajes", cascade = CascadeType.ALL)
 
-    public Personaje(Integer id, String imagen, String nombre, String Edad, String peso, String historia, Pelicula peliculas) {
+    private List<Pelicula> peliculas = new ArrayList<>();
+
+    public Personaje(Integer id, String imagen, String nombre, String edad, String peso, String historia, List<Pelicula> peliculas) {
         this.id = id;
         this.imagen = imagen;
         this.nombre = nombre;
-        this.Edad = Edad;
+        Edad = edad;
         this.peso = peso;
         this.historia = historia;
         this.peliculas = peliculas;
@@ -33,7 +35,7 @@ public class Personaje {
     public Personaje() {
     }
 
-    public Personaje(String imagen, String nombre, String edad, String peso, String historia, Pelicula peliculas) {
+    public Personaje(String imagen, String nombre, String edad, String peso, String historia, List<Pelicula> peliculas) {
         this.imagen = imagen;
         this.nombre = nombre;
         Edad = edad;
@@ -90,11 +92,11 @@ public class Personaje {
         this.historia = historia;
     }
 
-    public Pelicula getPeliculas() {
+    public List<Pelicula> getPeliculas() {
         return peliculas;
     }
 
     public void setPeliculas(Pelicula peliculas) {
-        this.peliculas = peliculas;
+        this.peliculas.add(peliculas);
     }
 }
