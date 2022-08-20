@@ -35,5 +35,8 @@ public class PersonajeService {
         return personajeRepository.save(personaje);
     }
 
+    public List<Personaje> findByNombre(String nombre) {
+        return personajeRepository.findByNombre(nombre);
+    }
 
 }

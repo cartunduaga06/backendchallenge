@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/characters")
+@RequestMapping(path = "/movies")
 public class PeliculaController {
 
     @Autowired
